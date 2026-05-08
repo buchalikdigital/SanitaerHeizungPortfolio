@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ThermoProfi GmbH – Ihr Meisterbetrieb für Sanitär & Heizung in Frankfurt am Main. Heizungsanlagen, Sanitärinstallation, Wärmepumpen und 24/7 Notdienst.">
+  <title>ThermoProfi GmbH – Sanitär & Heizung Frankfurt</title>
+
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css?family=manrope:400,500,600,700,800&family=inter:300,400,500,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── RESET & ROOT ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    :root {
+      --white:        #FFFFFF;
+      --bg:           #F8FAFC;
+      --bg-blue:      #EFF6FF;
+      --navy:         #1B3A6B;
+      --navy-mid:     #2D5FA0;
+      --navy-light:   #DBEAFE;
+      --orange:       #F97316;
+      --orange-dark:  #EA580C;
+      --orange-pale:  #FFF7ED;
+      --text:         #0F172A;
+      --text-light:   #475569;
+      --muted:        #94A3B8;
+      --border:       rgba(27,58,107,0.12);
+      --shadow-blue:  rgba(27,58,107,0.10);
+      --shadow-soft:  rgba(0,0,0,0.06);
+      --radius:       14px;
+      --nav-h:        72px;
+      --transition:   0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ─── TYPOGRAPHY ─── */
+    h1,h2,h3,h4 { font-family: 'Manrope', sans-serif; line-height: 1.15; }
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 18px;
+      line-height: 1.1;
+    }
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .orange-line {
+      width: 52px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+      border-radius: 2px;
+      margin: 20px 0 48px;
+    }
+
+    /* ─── LAYOUT ─── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 110px 0; }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 50px;
+      font-family: 'Inter', sans-serif; font-size: 0.92rem; font-weight: 600;
+      cursor: pointer; border: none; text-decoration: none;
+      transition: var(--transition);
+      position: relative; overflow: hidden;
+    }
+    .btn::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(255,255,255,0.12);
+      opacity: 0; transition: var(--transition);
+    }
+    .btn:hover::after { opacity: 1; }
+    .btn-orange {
+      background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+      color: #fff;
+      box-shadow: 0 6px 24px rgba(249,115,22,0.35);
+    }
+    .btn-orange:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(249,115,22,0.45); }
+    .btn-outline {
+      background: transparent;
+      color: var(--navy);
+      border: 2px solid var(--navy);
+    }
+    .btn-outline:hover { background: var(--navy); color: #fff; transform: translateY(-2px); }
+    .btn-white {
+      background: #fff;
+      color: var(--navy);
+      box-shadow: 0 4px 16px var(--shadow-soft);
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--shadow-soft); }
+
+    /* ─── NAVBAR ─── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: var(--nav-h);
+      background: rgba(255,255,255,0.96);
+      display: flex; align-items: center;
+      border-bottom: 1px solid transparent;
+      transition: var(--transition);
+    }
+    #navbar.scrolled {
+      border-bottom-color: var(--border);
+      box-shadow: 0 4px 24px var(--shadow-blue);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 40px; height: 40px;
+    }
+    .logo-text {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+    .logo-text span { color: var(--orange); }
+    .logo-sub {
+      font-size: 0.62rem;
+      font-weight: 500;
+      color: var(--muted);
+      display: block;
+      letter-spacing: 0.05em;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-light);
+      position: relative;
+      transition: color var(--transition);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 2px; background: var(--orange);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform var(--transition);
+      border-radius: 1px;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta { margin-left: 8px; }
+    .hamburger {
+      display: none;
+      flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px;
+      background: none; border: none;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--navy); border-radius: 1px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed; top: var(--nav-h); left: 0; right: 0;
+      background: #fff;
+      padding: 24px;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 8px 32px var(--shadow-blue);
+      z-index: 999;
+      flex-direction: column; gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none; color: var(--text); font-weight: 500;
+      padding: 12px 16px; border-radius: 10px;
+      transition: background var(--transition);
+    }
+    .mobile-menu a:hover { background: var(--bg-blue); }
+    .mobile-menu .btn { margin-top: 12px; justify-content: center; }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding-top: var(--nav-h);
+      position: relative;
+      overflow: hidden;
+      background: var(--white);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--white) 55%, var(--navy) 55%);
+      z-index: 0;
+    }
+    .hero-bg-pattern {
+      position: absolute; inset: 0; z-index: 1;
+      background-image:
+        radial-gradient(circle, rgba(27,58,107,0.06) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-content { padding: 48px 0; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--orange-pale);
+      border: 1px solid rgba(249,115,22,0.25);
+      border-radius: 50px;
+      padding: 6px 16px 6px 10px;
+      margin-bottom: 28px;
+    }
+    .hero-badge-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--orange);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    .hero-badge span {
+      font-size: 0.8rem; font-weight: 600;
+      color: var(--orange-dark);
+    }
+    .hero-title {
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      font-weight: 800; color: var(--navy);
+      line-height: 1.06; margin-bottom: 22px;
+    }
+    .hero-title .highlight { color: var(--orange); }
+    .hero-subtitle {
+      font-size: 1.08rem; color: var(--text-light);
+      line-height: 1.75; margin-bottom: 38px;
+      max-width: 480px;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+    .hero-meta {
+      display: flex; gap: 28px; flex-wrap: wrap;
+    }
+    .hero-meta-item {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hero-meta-item svg { flex-shrink: 0; }
+    .hero-meta-item span { font-size: 0.83rem; font-weight: 500; color: var(--text-light); }
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+      position: relative; height: 520px;
+    }
+    .hero-card-main {
+      position: absolute;
+      background: #fff;
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 24px 64px rgba(27,58,107,0.18);
+      width: 300px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+    }
+    .hero-card-main .card-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .hero-card-main h3 {
+      font-size: 1.1rem; font-weight: 700; color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .hero-card-main p {
+      font-size: 0.85rem; color: var(--text-light); line-height: 1.6;
+    }
+    .hero-card-float {
+      position: absolute;
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px 18px;
+      box-shadow: 0 12px 40px rgba(27,58,107,0.14);
+      display: flex; align-items: center; gap: 12px;
+      z-index: 4;
+    }
+    .hero-card-float.f1 { top: 60px; right: 20px; animation: floatA 4s ease-in-out infinite; }
+    .hero-card-float.f2 { bottom: 90px; left: 0px; animation: floatB 4.5s ease-in-out infinite; }
+    .hero-card-float.f3 { bottom: 160px; right: 0px; animation: floatA 5s ease-in-out infinite 0.5s; }
+    .float-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .float-icon.blue { background: var(--bg-blue); }
+    .float-icon.orange { background: var(--orange-pale); }
+    .hero-card-float strong { font-size: 0.82rem; font-weight: 700; color: var(--navy); display: block; }
+    .hero-card-float small { font-size: 0.72rem; color: var(--muted); }
+    .hero-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(27,58,107,0.08);
+    }
+    .hero-ring.r1 { width: 380px; height: 380px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: spin 18s linear infinite; }
+    .hero-ring.r2 { width: 480px; height: 480px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: spin 26s linear infinite reverse; }
+
+    /* ─── STATS ─── */
+    #stats {
+      padding: 64px 0;
+      background: var(--navy);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    .stat-item { padding: 8px; }
+    .stat-num {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      font-weight: 400;
+    }
+    .stat-divider {
+      width: 1px; background: rgba(255,255,255,0.1);
+      align-self: stretch;
+    }
+
+    /* ─── LEISTUNGEN ─── */
+    #leistungen { background: var(--bg); }
+    .leistungen-header { text-align: center; margin-bottom: 64px; }
+    .leistungen-header .section-subtitle { margin: 0 auto; }
+    .leistungen-header .orange-line { margin: 20px auto 0; }
+    .leistungen-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .leistung-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .leistung-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .leistung-card:hover::before { transform: scaleX(1); }
+    .leistung-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 56px var(--shadow-blue);
+      border-color: transparent;
+    }
+    .leistung-icon {
+      width: 58px; height: 58px; border-radius: 14px;
+      background: var(--bg-blue);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 22px;
+      transition: var(--transition);
+    }
+    .leistung-card:hover .leistung-icon {
+      background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+    }
+    .leistung-card:hover .leistung-icon svg path,
+    .leistung-card:hover .leistung-icon svg rect,
+    .leistung-card:hover .leistung-icon svg circle { stroke: #fff; }
+    .leistung-card h3 {
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 10px;
+    }
+    .leistung-card p {
+      font-size: 0.9rem; color: var(--text-light);
+      line-height: 1.7; margin-bottom: 20px;
+    }
+    .leistung-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.85rem; font-weight: 600;
+      color: var(--orange); text-decoration: none;
+      transition: gap var(--transition);
+    }
+    .leistung-link:hover { gap: 10px; }
+    .leistung-card.notdienst {
+      background: linear-gradient(135deg, var(--navy) 0%, #2D5FA0 100%);
+      border-color: transparent;
+    }
+    .leistung-card.notdienst h3, .leistung-card.notdienst p { color: rgba(255,255,255,0.92); }
+    .leistung-card.notdienst p { color: rgba(255,255,255,0.65); }
+    .leistung-card.notdienst .leistung-icon { background: rgba(255,255,255,0.12); }
+    .leistung-card.notdienst .leistung-link { color: var(--orange); }
+    .notdienst-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(249,115,22,0.2);
+      border: 1px solid rgba(249,115,22,0.4);
+      border-radius: 50px; padding: 4px 12px;
+      font-size: 0.75rem; font-weight: 600; color: #FED7AA;
+      margin-bottom: 18px;
+    }
+    .notdienst-badge::before {
+      content: ''; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--orange);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    /* ─── WARUM ─── */
+    #warum { background: var(--white); }
+    .warum-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .warum-left .section-subtitle { margin-bottom: 32px; }
+    .warum-features {
+      display: flex; flex-direction: column; gap: 24px;
+    }
+    .warum-feature {
+      display: flex; gap: 18px; align-items: flex-start;
+      padding: 22px 24px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .warum-feature:hover {
+      border-color: var(--orange);
+      background: var(--orange-pale);
+      transform: translateX(6px);
+    }
+    .wf-icon {
+      width: 46px; height: 46px; border-radius: 12px;
+      background: var(--bg-blue);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .warum-feature:hover .wf-icon { background: var(--orange); }
+    .warum-feature:hover .wf-icon svg path,
+    .warum-feature:hover .wf-icon svg polyline { stroke: #fff; }
+    .wf-text strong { display: block; font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .wf-text span { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; }
+    .warum-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .warum-stat-card {
+      background: var(--bg);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+    .warum-stat-card.highlight {
+      background: var(--navy);
+      border-color: transparent;
+      grid-column: span 2;
+    }
+    .wscard-num {
+      font-family: 'Manrope', sans-serif;
+      font-size: 2.4rem; font-weight: 800;
+      color: var(--orange); line-height: 1;
+      margin-bottom: 6px;
+    }
+    .wscard-label {
+      font-size: 0.85rem; color: var(--text-light);
+    }
+    .warum-stat-card.highlight .wscard-label { color: rgba(255,255,255,0.65); }
+
+    /* ─── PROZESS ─── */
+    #prozess { background: var(--bg-blue); }
+    .prozess-header { text-align: center; margin-bottom: 72px; }
+    .prozess-header .section-subtitle { margin: 0 auto; }
+    .prozess-header .orange-line { margin: 20px auto 0; }
+    .prozess-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .prozess-steps::before {
+      content: '';
+      position: absolute; top: 38px; left: 10%; right: 10%;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, var(--navy-light) 0, var(--navy-light) 8px, transparent 8px, transparent 16px);
+      z-index: 0;
+    }
+    .prozess-step {
+      text-align: center; padding: 0 16px;
+      position: relative; z-index: 1;
+    }
+    .step-num {
+      width: 76px; height: 76px; border-radius: 50%;
+      background: #fff;
+      border: 3px solid var(--navy-light);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.3rem; font-weight: 800; color: var(--navy);
+      transition: var(--transition);
+      position: relative;
+    }
+    .prozess-step:hover .step-num {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+      transform: scale(1.1);
+      box-shadow: 0 8px 28px rgba(249,115,22,0.35);
+    }
+    .prozess-step h3 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .prozess-step p { font-size: 0.83rem; color: var(--text-light); line-height: 1.65; }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials { background: var(--white); }
+    .testimonials-header { text-align: center; margin-bottom: 64px; }
+    .testimonials-header .section-subtitle { margin: 0 auto; }
+    .testimonials-header .orange-line { margin: 20px auto 0; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      border: 1px solid var(--border);
+      position: relative;
+      transition: var(--transition);
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px var(--shadow-blue);
+      border-color: var(--navy-light);
+    }
+    .quote-mark {
+      font-family: 'Manrope', sans-serif;
+      font-size: 4rem; line-height: 0.8;
+      color: var(--orange); font-weight: 800;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .testimonial-text {
+      font-size: 0.9rem; color: var(--text-light);
+      line-height: 1.75; margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-footer {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .testimonial-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.85rem; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+    }
+    .testimonial-name { font-size: 0.9rem; font-weight: 700; color: var(--navy); }
+    .testimonial-loc { font-size: 0.78rem; color: var(--muted); }
+    .stars {
+      display: flex; gap: 2px; margin-bottom: 14px;
+    }
+    .star { color: var(--orange); font-size: 1rem; }
+
+    /* ─── FAQ ─── */
+    #faq { background: var(--bg); }
+    .faq-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+    .faq-item.open { border-color: var(--orange); }
+    .faq-question {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 22px;
+      cursor: pointer;
+      gap: 16px;
+    }
+    .faq-question span {
+      font-size: 0.92rem; font-weight: 600; color: var(--navy);
+    }
+    .faq-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--bg-blue);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+    .faq-item.open .faq-icon { background: var(--orange); transform: rotate(45deg); }
+    .faq-item.open .faq-icon svg path { stroke: #fff; }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 22px;
+      font-size: 0.88rem; color: var(--text-light); line-height: 1.75;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; padding: 0 22px 20px; }
+
+    /* ─── KONTAKT ─── */
+    #kontakt { background: var(--white); }
+    .kontakt-inner {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .kontakt-form-wrap {
+      background: var(--bg);
+      border-radius: 20px;
+      padding: 44px 40px;
+      border: 1px solid var(--border);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block; font-size: 0.8rem; font-weight: 600;
+      color: var(--navy); margin-bottom: 8px; letter-spacing: 0.02em;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%; padding: 13px 16px;
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: 10px; font-family: 'Inter', sans-serif;
+      font-size: 0.9rem; color: var(--text);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none; appearance: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,58,107,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-check {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.82rem; color: var(--text-light); line-height: 1.5;
+      margin-bottom: 22px;
+    }
+    .form-check input[type="checkbox"] {
+      width: 18px; height: 18px; border-radius: 5px;
+      border: 1.5px solid var(--border); cursor: pointer;
+      accent-color: var(--orange); flex-shrink: 0; margin-top: 1px;
+    }
+    .form-check a { color: var(--navy); }
+    #form-success {
+      display: none; text-align: center; padding: 32px;
+    }
+    #form-success .success-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+    }
+    #form-success h3 { font-size: 1.3rem; color: var(--navy); margin-bottom: 10px; }
+    #form-success p { font-size: 0.9rem; color: var(--text-light); line-height: 1.7; }
+    .kontakt-info { padding-top: 8px; }
+    .kontakt-info h3 {
+      font-size: 1.6rem; font-weight: 800; color: var(--navy); margin-bottom: 16px;
+    }
+    .kontakt-info > p {
+      font-size: 0.9rem; color: var(--text-light); line-height: 1.7; margin-bottom: 36px;
+    }
+    .kontakt-details { display: flex; flex-direction: column; gap: 20px; }
+    .kontakt-detail {
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .kd-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--bg-blue);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .kd-text strong { display: block; font-size: 0.8rem; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+    .kd-text span, .kd-text a {
+      font-size: 0.9rem; color: var(--text-light); text-decoration: none;
+    }
+    .kd-text a:hover { color: var(--orange); }
+    .kontakt-hours {
+      margin-top: 36px; padding: 24px;
+      background: var(--bg); border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .kontakt-hours h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
+    .hours-row {
+      display: flex; justify-content: space-between;
+      font-size: 0.85rem; color: var(--text-light);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row strong { color: var(--navy); }
+
+    /* ─── FOOTER ─── */
+    #footer {
+      background: var(--navy);
+      padding: 64px 0 32px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand p {
+      font-size: 0.88rem; color: rgba(255,255,255,0.55);
+      line-height: 1.75; margin-top: 16px; max-width: 300px;
+    }
+    .footer-logo-text { color: #fff; }
+    .footer-logo-text span { color: var(--orange); }
+    .footer-col h4 {
+      font-size: 0.8rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.4); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a {
+      font-size: 0.88rem; color: rgba(255,255,255,0.65);
+      text-decoration: none; transition: color var(--transition);
+    }
+    .footer-col a:hover { color: var(--orange); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.4); }
+    .footer-social { display: flex; gap: 12px; }
+    .social-link {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition);
+    }
+    .social-link:hover { background: var(--orange); }
+
+    /* ─── FLOATING BUTTONS ─── */
+    #whatsapp-btn {
+      position: fixed; bottom: 24px; right: 24px; z-index: 800;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+      text-decoration: none;
+      transition: var(--transition);
+      animation: floatA 4s ease-in-out infinite;
+    }
+    #whatsapp-btn:hover { transform: scale(1.12); box-shadow: 0 10px 32px rgba(37,211,102,0.55); }
+    #back-top {
+      position: fixed; bottom: 88px; right: 24px; z-index: 800;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; border: none;
+      box-shadow: 0 4px 16px var(--shadow-blue);
+      transition: var(--transition);
+      opacity: 0; pointer-events: none;
+    }
+    #back-top.visible { opacity: 1; pointer-events: all; }
+    #back-top:hover { background: var(--orange); transform: translateY(-3px); }
+
+    /* ─── COOKIE BANNER ─── */
+    #cookie-banner {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 900;
+      background: var(--navy);
+      padding: 18px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; flex-wrap: wrap;
+      transform: translateY(100%);
+      transition: transform 0.5s ease;
+    }
+    #cookie-banner.show { transform: translateY(0); }
+    #cookie-banner p {
+      font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.6; flex: 1;
+    }
+    #cookie-banner a { color: var(--orange); }
+    .cookie-actions { display: flex; gap: 10px; flex-shrink: 0; }
+    .btn-cookie-accept {
+      padding: 10px 22px; border-radius: 50px;
+      background: var(--orange); color: #fff;
+      font-size: 0.85rem; font-weight: 600;
+      border: none; cursor: pointer; transition: var(--transition);
+    }
+    .btn-cookie-decline {
+      padding: 10px 22px; border-radius: 50px;
+      background: transparent; color: rgba(255,255,255,0.6);
+      font-size: 0.85rem; font-weight: 500;
+      border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: var(--transition);
+    }
+
+    /* ─── REVEAL ANIMATIONS ─── */
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.from-left { transform: translateX(-32px); }
+    .reveal.from-right { transform: translateX(32px); }
+    .reveal.visible { opacity: 1; transform: translate(0); }
+
+    /* ─── KEYFRAMES ─── */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.85); }
+    }
+    @keyframes floatA {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    @keyframes floatB {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+    @keyframes spin {
+      from { transform: translate(-50%,-50%) rotate(0deg); }
+      to { transform: translate(-50%,-50%) rotate(360deg); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-bg { background: linear-gradient(180deg, var(--white) 60%, var(--navy) 60%); }
+      .hero-visual { height: 360px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .stat-divider { display: none; }
+      .leistungen-grid { grid-template-columns: 1fr; }
+      .warum-inner { grid-template-columns: 1fr; gap: 48px; }
+      .prozess-steps { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .prozess-steps::before { display: none; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .faq-inner { grid-template-columns: 1fr; gap: 48px; }
+      .kontakt-inner { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 72px 0; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-title { font-size: 2.2rem; }
+      .hero-actions { flex-direction: column; }
+      .form-row { grid-template-columns: 1fr; }
+      .kontakt-form-wrap { padding: 28px 20px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .prozess-steps { grid-template-columns: 1fr; }
+      .warum-right { grid-template-columns: 1fr; }
+      .warum-stat-card.highlight { grid-column: span 1; }
+    }
+    @media (max-width: 420px) {
+      .hero-visual { display: none; }
+      .hero-bg { background: var(--white); }
+    }
+
+    /* ─── MOBILE PERFORMANCE ─────────────────────────────────── */
+    @media (hover: none), (max-width: 900px) {
+      /* Rotierende Ringe deaktivieren */
+      .hero-ring { animation: none !important; }
+      /* Schwebende Karten deaktivieren */
+      .hero-card-float { animation: none !important; }
+      /* Navbar: kein teures backdrop-filter */
+      #navbar {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(255,255,255,0.98) !important;
+      }
+      #navbar.scrolled { background: #fff !important; }
+      /* WhatsApp-Button: kein Puls */
+      #whatsapp-btn { animation: none; }
+      /* Hover-Transforms auf Touch deaktivieren */
+      .btn-orange:hover, .btn-outline:hover, .btn-white:hover { transform: none; }
+      .leistung-card:hover { transform: none; }
+      .testimonial-card:hover { transform: none; }
+      .warum-feature:hover { transform: none; }
+      .prozess-step:hover .step-num { transform: none; }
+    }
+    @media (max-width: 600px) {
+      /* Ringe komplett ausblenden auf kleinen Screens */
+      .hero-ring { display: none; }
+    }
+    /* Systemeinstellung "Bewegung reduzieren" respektieren */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ─── -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <!-- Logo SVG: Wassertropfen + Flamme -->
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="20" fill="#EFF6FF"/>
+          <!-- Water drop body -->
+          <path d="M20 30 C13 30 9 25 9 20 C9 14 15 9 20 7 C25 9 31 14 31 20 C31 25 27 30 20 30Z" fill="#1B3A6B"/>
+          <!-- Flame inside -->
+          <path d="M20 26 C17 26 15 24 15 21.5 C15 19 17 17 19 16 C19 18 20.5 19 21 20.5 C21.5 19 21 17.5 22 16.5 C23 19 25 20 25 22 C25 24 22.5 26 20 26Z" fill="#F97316"/>
+        </svg>
+        <div>
+          <span class="logo-text">Thermo<span>Profi</span></span>
+          <span class="logo-sub">Sanitär & Heizung GmbH</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#warum">Über uns</a></li>
+        <li><a href="#prozess">Ablauf</a></li>
+        <li><a href="#testimonials">Referenzen</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+
+      <a href="#kontakt" class="btn btn-orange nav-cta">Kostenlos anfragen</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#leistungen" class="mobile-link">Leistungen</a>
+  <a href="#warum" class="mobile-link">Über uns</a>
+  <a href="#prozess" class="mobile-link">Ablauf</a>
+  <a href="#testimonials" class="mobile-link">Referenzen</a>
+  <a href="#faq" class="mobile-link">FAQ</a>
+  <a href="#kontakt" class="btn btn-orange">Kostenlos anfragen</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-pattern"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          <span>24/7 Notdienst verfügbar</span>
+        </div>
+        <h1 class="hero-title">
+          Wärme &amp; Wasser —<br>
+          <span class="highlight">perfekt</span> installiert
+        </h1>
+        <p class="hero-subtitle">
+          Ihr zuverlässiger Meisterbetrieb in Frankfurt für Heizungsanlagen, Sanitärinstallation, Wärmepumpen und schnellen Notdienst. Über 25 Jahre Erfahrung — Festpreisgarantie inklusive.
+        </p>
+        <div class="hero-actions">
+          <a href="#kontakt" class="btn btn-orange">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.22 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.91v2z"/></svg>
+            Jetzt anfragen
+          </a>
+          <a href="#leistungen" class="btn btn-outline">Unsere Leistungen</a>
+        </div>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Kostenloser Kostenvoranschlag</span>
+          </div>
+          <div class="hero-meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Meisterbetrieb seit 1998</span>
+          </div>
+          <div class="hero-meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Festpreisgarantie</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-ring r1"></div>
+        <div class="hero-ring r2"></div>
+
+        <div class="hero-card-main">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8">
+              <path d="M12 2c0 0-6 5-6 10a6 6 0 0012 0c0-5-6-10-6-10z"/>
+              <path d="M12 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="#fff"/>
+            </svg>
+          </div>
+          <h3>Heizung ausgefallen?</h3>
+          <p>Unser Notdienst ist 24 Stunden, 7 Tage die Woche für Sie da — auch an Feiertagen.</p>
+        </div>
+
+        <div class="hero-card-float f1">
+          <div class="float-icon orange">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Meisterbetrieb</strong>
+            <small>Zertifiziert & versichert</small>
+          </div>
+        </div>
+
+        <div class="hero-card-float f2">
+          <div class="float-icon blue">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Reaktionszeit</strong>
+            <small>Ø unter 60 Minuten</small>
+          </div>
+        </div>
+
+        <div class="hero-card-float f3">
+          <div class="float-icon orange">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2">
+              <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Festpreisgarantie</strong>
+            <small>Keine versteckten Kosten</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS ─── -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-num" data-target="1200">0</div>
+        <div class="stat-label">Abgeschlossene Projekte</div>
+      </div>
+      <div class="stat-item reveal" style="transition-delay:0.1s">
+        <div class="stat-num" data-target="25">0</div>
+        <div class="stat-label">Jahre Erfahrung</div>
+      </div>
+      <div class="stat-item reveal" style="transition-delay:0.2s">
+        <div class="stat-num">98<span style="font-size:1.4rem">%</span></div>
+        <div class="stat-label">Kundenzufriedenheit</div>
+      </div>
+      <div class="stat-item reveal" style="transition-delay:0.3s">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Notdienst verfügbar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── LEISTUNGEN ─── -->
+<section id="leistungen">
+  <div class="container">
+    <div class="leistungen-header reveal">
+      <span class="section-label">Was wir anbieten</span>
+      <h2 class="section-title">Unsere Leistungen</h2>
+      <p class="section-subtitle">Von der Sanitärinstallation bis zur modernen Wärmepumpe — wir sind Ihr kompetenter Ansprechpartner für alles rund um Sanitär und Heizung.</p>
+      <div class="orange-line"></div>
+    </div>
+
+    <div class="leistungen-grid">
+      <!-- Heizungsanlagen -->
+      <div class="leistung-card reveal">
+        <div class="leistung-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
+            <path d="M12 2c0 0-6 5-6 10a6 6 0 0012 0c0-5-6-10-6-10z"/>
+            <path d="M12 19v3M9 22h6"/>
+          </svg>
+        </div>
+        <h3>Heizungsanlagen</h3>
+        <p>Installation, Modernisierung und Wartung aller Heizungsarten: Gas, Öl, Wärmepumpe, Pellets. Wir planen Ihre neue Heizungsanlage und führen die Montage fachgerecht aus.</p>
+        <a href="#kontakt" class="leistung-link">
+          Anfragen
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <!-- Sanitär -->
+      <div class="leistung-card reveal" style="transition-delay:0.1s">
+        <div class="leistung-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
+            <path d="M6 3v12"/>
+            <path d="M18 9a3 3 0 000-6H3"/>
+            <path d="M6 15a3 3 0 106 0v-3H6v3z"/>
+          </svg>
+        </div>
+        <h3>Sanitärinstallation</h3>
+        <p>Kompletter Bäderneubau und -sanierung, Rohrleitungsarbeiten, Wasserschadensanierung. Wir gestalten und installieren Ihr Traumbad — vom Konzept bis zur schlüsselfertigen Übergabe.</p>
+        <a href="#kontakt" class="leistung-link">
+          Anfragen
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <!-- Notdienst -->
+      <div class="leistung-card notdienst reveal" style="transition-delay:0.2s">
+        <div class="notdienst-badge">Sofort verfügbar</div>
+        <div class="leistung-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3>24/7 Notdienst</h3>
+        <p>Rohrbruch, Heizungsausfall, Wasserschaden — wir sind innerhalb von 60 Minuten bei Ihnen. Tag und Nacht, Wochenende und Feiertag. Rufen Sie jetzt an: <strong style="color:#fff">069 123 456 78</strong></p>
+        <a href="tel:06912345678" class="leistung-link">
+          Jetzt anrufen
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <!-- Wärmepumpen -->
+      <div class="leistung-card reveal" style="transition-delay:0.3s">
+        <div class="leistung-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+          </svg>
+        </div>
+        <h3>Wärmepumpen &amp; Solar</h3>
+        <p>Zukunftssichere Heizsysteme mit erneuerbaren Energien. Wir beraten Sie zu Wärmepumpen und Solarthermie, beantragen Fördergelder (BEG) und kümmern uns um die komplette Installation.</p>
+        <a href="#kontakt" class="leistung-link">
+          Anfragen
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WARUM ─── -->
+<section id="warum">
+  <div class="container">
+    <div class="warum-inner">
+      <div class="warum-left">
+        <span class="section-label reveal">Warum ThermoProfi</span>
+        <h2 class="section-title reveal">Qualität, auf die Sie sich verlassen können</h2>
+        <p class="section-subtitle reveal">Seit 1998 steht ThermoProfi für handwerkliche Exzellenz, Zuverlässigkeit und transparente Preise — in Frankfurt und der gesamten Rhein-Main-Region.</p>
+        <div class="warum-features">
+          <div class="warum-feature reveal">
+            <div class="wf-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="wf-text">
+              <strong>Zertifizierter Meisterbetrieb</strong>
+              <span>Staatlich anerkannter Meister des Sanitär-, Heizungs- und Klimahandwerks mit vollständiger Betriebshaftpflicht.</span>
+            </div>
+          </div>
+          <div class="warum-feature reveal" style="transition-delay:0.1s">
+            <div class="wf-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2">
+                <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+              </svg>
+            </div>
+            <div class="wf-text">
+              <strong>Festpreisgarantie</strong>
+              <span>Unser Angebot ist Ihr Preis — keine Überraschungen auf der Rechnung. Ehrlichkeit und Transparenz seit dem ersten Tag.</span>
+            </div>
+          </div>
+          <div class="warum-feature reveal" style="transition-delay:0.2s">
+            <div class="wf-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                <polyline points="17 6 23 6 23 12"/>
+              </svg>
+            </div>
+            <div class="wf-text">
+              <strong>Förderberatung inklusive</strong>
+              <span>Wir kennen alle aktuellen Förderprogramme (BAFA, KfW, BEG) und maximieren Ihren staatlichen Zuschuss.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="warum-right reveal from-right">
+        <div class="warum-stat-card">
+          <div class="wscard-num">∅ 58<span style="font-size:1.2rem">min</span></div>
+          <div class="wscard-label">Reaktionszeit im Notdienst</div>
+        </div>
+        <div class="warum-stat-card">
+          <div class="wscard-num">5★</div>
+          <div class="wscard-label">Durchschnittliche Bewertung</div>
+        </div>
+        <div class="warum-stat-card highlight">
+          <div class="wscard-num" style="color:var(--orange)">3 Jahre</div>
+          <div class="wscard-label" style="color:rgba(255,255,255,0.65);font-size:0.92rem;margin-top:4px">Gewährleistung auf alle Arbeiten — weit über dem gesetzlichen Standard</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROZESS ─── -->
+<section id="prozess">
+  <div class="container">
+    <div class="prozess-header reveal">
+      <span class="section-label">So einfach geht's</span>
+      <h2 class="section-title">Unser Ablauf</h2>
+      <p class="section-subtitle">Von der ersten Anfrage bis zur fertigen Installation — wir machen den Prozess so einfach wie möglich für Sie.</p>
+      <div class="orange-line"></div>
+    </div>
+
+    <div class="prozess-steps">
+      <div class="prozess-step reveal">
+        <div class="step-num">1</div>
+        <h3>Anfrage stellen</h3>
+        <p>Kontaktieren Sie uns per Formular, Telefon oder WhatsApp. Wir melden uns innerhalb von 2 Stunden zurück.</p>
+      </div>
+      <div class="prozess-step reveal" style="transition-delay:0.15s">
+        <div class="step-num">2</div>
+        <h3>Kostenloser Termin</h3>
+        <p>Wir besichtigen Ihr Objekt kostenlos und erstellen einen detaillierten Kostenvoranschlag ohne versteckte Kosten.</p>
+      </div>
+      <div class="prozess-step reveal" style="transition-delay:0.3s">
+        <div class="step-num">3</div>
+        <h3>Fachgerechte Ausführung</h3>
+        <p>Unsere erfahrenen Meister führen die Arbeiten termingerecht, sauber und professionell aus.</p>
+      </div>
+      <div class="prozess-step reveal" style="transition-delay:0.45s">
+        <div class="step-num">4</div>
+        <h3>Abnahme &amp; Garantie</h3>
+        <p>Gemeinsame Abnahme, Einweisung und 3 Jahre Gewährleistung auf alle erbrachten Leistungen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section id="testimonials">
+  <div class="container">
+    <div class="testimonials-header reveal">
+      <span class="section-label">Was Kunden sagen</span>
+      <h2 class="section-title">Kundenstimmen</h2>
+      <p class="section-subtitle">Mehr als 1.200 zufriedene Kunden vertrauen ThermoProfi — lesen Sie, was sie über uns sagen.</p>
+      <div class="orange-line"></div>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <span class="quote-mark">"</span>
+        <p class="testimonial-text">Heizung am Freitagabend ausgefallen — ThermoProfi war in 45 Minuten da und hat alles repariert. Absolut begeistert vom schnellen und professionellen Service!</p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar">MK</div>
+          <div>
+            <div class="testimonial-name">Michael Krause</div>
+            <div class="testimonial-loc">Frankfurt-Sachsenhausen</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal" style="transition-delay:0.12s">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <span class="quote-mark">"</span>
+        <p class="testimonial-text">Komplette Badsanierung in zwei Wochen — pünktlich, sauber, exakt nach Plan. Das Ergebnis übertrifft unsere Erwartungen. Klare Empfehlung!</p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar">SB</div>
+          <div>
+            <div class="testimonial-name">Sandra Berger</div>
+            <div class="testimonial-loc">Frankfurt-Bornheim</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal" style="transition-delay:0.24s">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <span class="quote-mark">"</span>
+        <p class="testimonial-text">Wärmepumpe inklusive Förderantrag — alles aus einer Hand. ThermoProfi hat uns über 8.000€ Fördergelder besorgt. Kompetent und transparent in jedem Schritt.</p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar">TH</div>
+          <div>
+            <div class="testimonial-name">Thomas Hoffmann</div>
+            <div class="testimonial-loc">Frankfurt-Praunheim</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-inner">
+      <div class="faq-left reveal">
+        <span class="section-label">Häufige Fragen</span>
+        <h2 class="section-title">Alles, was Sie wissen möchten</h2>
+        <p class="section-subtitle">Haben Sie weitere Fragen? Wir sind gerne für Sie da.</p>
+        <div class="orange-line" style="margin-bottom:28px"></div>
+        <a href="#kontakt" class="btn btn-orange">Direkt anfragen</a>
+      </div>
+
+      <div class="faq-list reveal from-right">
+        <div class="faq-item open">
+          <div class="faq-question">
+            <span>Was kostet ein Kostenvoranschlag?</span>
+            <div class="faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">Der Kostenvoranschlag ist bei uns immer kostenlos und unverbindlich. Wir kommen zu Ihnen, besichtigen die Situation und erstellen ein detailliertes Angebot — ohne jede Verpflichtung Ihrerseits.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Wie schnell ist der Notdienst bei mir?</span>
+            <div class="faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">Im Frankfurter Stadtgebiet und der näheren Umgebung sind wir durchschnittlich in 45–60 Minuten bei Ihnen. Unser Notdienst ist 24/7, auch an Sonn- und Feiertagen aktiv.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Welche Heizungsmarken bauen Sie ein?</span>
+            <div class="faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">Wir sind herstellerunabhängig und arbeiten mit allen führenden Marken: Viessmann, Bosch, Vaillant, Wolf, Buderus, Stiebel Eltron und weiteren. Wir empfehlen das System, das am besten zu Ihren Anforderungen passt.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Welche Fördergelder gibt es für eine Wärmepumpe?</span>
+            <div class="faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">Über das Bundesförderprogramm Effiziente Gebäude (BEG) sind aktuell bis zu 70% Förderung möglich. Wir übernehmen den kompletten Förderantrag für Sie und optimieren die Fördersumme.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Wie lange dauert eine Badsanierung?</span>
+            <div class="faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">Ein durchschnittliches Bad (ca. 8–12 m²) sanieren wir in 10–14 Werktagen. Wir planen den Ablauf so, dass Sie möglichst kurz ohne Bad auskommen müssen.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Gibt es Garantie auf die Arbeiten?</span>
+            <div class="faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">Ja — wir gewähren 3 Jahre Gewährleistung auf alle von uns erbrachten Handwerksleistungen. Das ist deutlich mehr als die gesetzlich vorgeschriebenen 2 Jahre.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── KONTAKT ─── -->
+<section id="kontakt">
+  <div class="container">
+    <div class="kontakt-inner">
+      <div class="kontakt-form-wrap reveal">
+        <span class="section-label">Kostenlose Anfrage</span>
+        <h2 class="section-title" style="font-size:1.8rem;margin-bottom:8px">Schreiben Sie uns</h2>
+        <p style="font-size:0.88rem;color:var(--text-light);margin-bottom:28px">Wir melden uns innerhalb von 2 Stunden zurück.</p>
+
+        <form id="contact-form" novalidate>
+          <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="name" placeholder="Max Mustermann" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefon</label>
+              <input type="tel" id="phone" name="phone" placeholder="069 xxxxxxx">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail *</label>
+            <input type="email" id="email" name="email" placeholder="max@beispiel.de" required>
+          </div>
+          <div class="form-group">
+            <label for="leistung">Gewünschte Leistung</label>
+            <select id="leistung" name="leistung">
+              <option value="">Bitte wählen...</option>
+              <option>Heizungsanlage</option>
+              <option>Sanitärinstallation</option>
+              <option>Wärmepumpe / Solar</option>
+              <option>Notdienst</option>
+              <option>Sonstiges</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Nachricht *</label>
+            <textarea id="message" name="message" placeholder="Beschreiben Sie kurz Ihr Anliegen..." required></textarea>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="whatsapp" name="whatsapp">
+            <label for="whatsapp">Ich möchte auch per WhatsApp kontaktiert werden (optional)</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="dsgvo" name="dsgvo" required>
+            <label for="dsgvo">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. *</label>
+          </div>
+          <button type="submit" class="btn btn-orange" style="width:100%;justify-content:center" id="submit-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Anfrage absenden
+          </button>
+          <p id="form-error" style="display:none;color:#dc2626;font-size:0.85rem;margin-top:14px;text-align:center"></p>
+        </form>
+
+        <div id="form-success">
+          <div class="success-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Anfrage erhalten!</h3>
+          <p>Vielen Dank, <span id="success-name"></span>. Wir melden uns innerhalb von 2 Stunden bei Ihnen.</p>
+        </div>
+      </div>
+
+      <div class="kontakt-info reveal from-right">
+        <h3>ThermoProfi GmbH</h3>
+        <p>Ihr Meisterbetrieb in Frankfurt am Main — persönlich, zuverlässig, fair.</p>
+
+        <div class="kontakt-details">
+          <div class="kontakt-detail">
+            <div class="kd-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.22 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.91v2z"/></svg>
+            </div>
+            <div class="kd-text">
+              <strong>Telefon</strong>
+              <a href="tel:06912345678">069 123 456 78</a>
+            </div>
+          </div>
+          <div class="kontakt-detail">
+            <div class="kd-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="kd-text">
+              <strong>E-Mail</strong>
+              <a href="mailto:info@thermoprofi-frankfurt.de">info@thermoprofi-frankfurt.de</a>
+            </div>
+          </div>
+          <div class="kontakt-detail">
+            <div class="kd-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="kd-text">
+              <strong>Adresse</strong>
+              <span>Musterstraße 42, 60311 Frankfurt am Main</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="kontakt-hours">
+          <h4>Öffnungszeiten</h4>
+          <div class="hours-row"><strong>Mo – Fr</strong><span>07:00 – 18:00 Uhr</span></div>
+          <div class="hours-row"><strong>Samstag</strong><span>08:00 – 14:00 Uhr</span></div>
+          <div class="hours-row"><strong>Notdienst</strong><span style="color:var(--orange);font-weight:600">24 / 7</span></div>
+        </div>
+
+        <div style="margin-top:28px">
+          <a href="tel:06912345678" class="btn btn-orange" style="width:100%;justify-content:center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.22 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.91v2z"/></svg>
+            069 123 456 78
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <svg class="logo-icon" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="rgba(255,255,255,0.08)"/><path d="M20 30 C13 30 9 25 9 20 C9 14 15 9 20 7 C25 9 31 14 31 20 C31 25 27 30 20 30Z" fill="rgba(255,255,255,0.7)"/><path d="M20 26 C17 26 15 24 15 21.5 C15 19 17 17 19 16 C19 18 20.5 19 21 20.5 C21.5 19 21 17.5 22 16.5 C23 19 25 20 25 22 C25 24 22.5 26 20 26Z" fill="#F97316"/></svg>
+          <div>
+            <span class="logo-text footer-logo-text">Thermo<span>Profi</span></span>
+            <span class="logo-sub" style="color:rgba(255,255,255,0.4)">Sanitär & Heizung GmbH</span>
+          </div>
+        </a>
+        <p>Ihr zuverlässiger Meisterbetrieb in Frankfurt am Main. Heizung, Sanitär und Wärmepumpen aus einer Hand — seit 1998.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Leistungen</h4>
+        <ul>
+          <li><a href="#leistungen">Heizungsanlagen</a></li>
+          <li><a href="#leistungen">Sanitärinstallation</a></li>
+          <li><a href="#leistungen">Wärmepumpen</a></li>
+          <li><a href="#leistungen">24/7 Notdienst</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 ThermoProfi GmbH · Alle Rechte vorbehalten</p>
+      <div class="footer-social">
+        <a href="#" class="social-link" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,0.7)"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://wa.me/4906912345678" class="social-link" aria-label="WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,0.7)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── FLOATING BUTTONS ─── -->
+<a href="https://wa.me/4906912345678" id="whatsapp-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<button id="back-top" aria-label="Nach oben">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- ─── COOKIE BANNER ─── -->
+<div id="cookie-banner">
+  <p>Wir verwenden Cookies, um Ihnen die beste Erfahrung auf unserer Website zu bieten. <a href="datenschutz.html">Mehr erfahren</a></p>
+  <div class="cookie-actions">
+    <button class="btn-cookie-decline" id="cookie-decline">Ablehnen</button>
+    <button class="btn-cookie-accept" id="cookie-accept">Akzeptieren</button>
+  </div>
+</div>
+
+<!-- ─── JAVASCRIPT ─── -->
+<script>
+(function() {
+  'use strict';
+
+  // ── Navbar scroll ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+    document.getElementById('back-top').classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  // ── Back to top ──
+  document.getElementById('back-top').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ── Hamburger menu ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+  });
+  document.querySelectorAll('.mobile-link, .mobile-menu .btn').forEach(el => {
+    el.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+    });
+  });
+
+  // ── Reveal on scroll ──
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => revealObs.observe(el));
+
+  // ── Animated counters ──
+  const counters = document.querySelectorAll('.stat-num[data-target]');
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '+';
+      let start = 0;
+      const duration = 1600;
+      const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(ease * target) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(el => counterObs.observe(el));
+
+  // ── FAQ accordion ──
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // ── Contact form ──
+  const form = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const errorEl = document.getElementById('form-error');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorEl.style.display = 'none';
+
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+      const dsgvo = form.dsgvo.checked;
+
+      if (name.length < 2) { showError('Bitte geben Sie Ihren Namen ein.'); return; }
+      if (!/\S+@\S+\.\S+/.test(email)) { showError('Bitte geben Sie eine gültige E-Mail ein.'); return; }
+      if (message.length < 10) { showError('Bitte schreiben Sie eine Nachricht (min. 10 Zeichen).'); return; }
+      if (!dsgvo) { showError('Bitte stimmen Sie der Datenschutzerklärung zu.'); return; }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Wird gesendet…';
+
+      try {
+        const data = new FormData(form);
+        const res = await fetch('mail.php', { method: 'POST', body: data });
+        const json = await res.json();
+        if (json.success) {
+          form.style.display = 'none';
+          const success = document.getElementById('form-success');
+          document.getElementById('success-name').textContent = name;
+          success.style.display = 'block';
+        } else {
+          showError(json.message || 'Fehler beim Senden. Bitte versuchen Sie es erneut.');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Anfrage absenden';
+        }
+      } catch {
+        showError('Verbindungsfehler. Bitte rufen Sie uns direkt an: 069 123 456 78');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Anfrage absenden';
+      }
+    });
+  }
+
+  function showError(msg) {
+    errorEl.textContent = msg;
+    errorEl.style.display = 'block';
+  }
+
+  // ── Cookie banner ──
+  if (!localStorage.getItem('tp-cookie')) {
+    setTimeout(() => document.getElementById('cookie-banner').classList.add('show'), 1500);
+  }
+  document.getElementById('cookie-accept').addEventListener('click', () => {
+    localStorage.setItem('tp-cookie', '1');
+    document.getElementById('cookie-banner').classList.remove('show');
+  });
+  document.getElementById('cookie-decline').addEventListener('click', () => {
+    document.getElementById('cookie-banner').classList.remove('show');
+  });
+
+})();
+</script>
+</body>
+</html>
