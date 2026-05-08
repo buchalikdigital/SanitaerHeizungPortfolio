@@ -373,12 +373,20 @@
     .leistung-card {
       background: #fff;
       border-radius: var(--radius);
-      padding: 40px 36px;
+      padding: 0;
       border: 1px solid var(--border);
       transition: var(--transition);
       position: relative;
       overflow: hidden;
     }
+    .leistung-card-img {
+      width: 100%; height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .leistung-card:hover .leistung-card-img { transform: scale(1.05); }
+    .leistung-card-body { padding: 32px 32px 36px; }
     .leistung-card::before {
       content: '';
       position: absolute; top: 0; left: 0; right: 0;
@@ -1117,68 +1125,84 @@
     <div class="leistungen-grid">
       <!-- Heizungsanlagen -->
       <div class="leistung-card reveal">
-        <div class="leistung-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
-            <path d="M12 2c0 0-6 5-6 10a6 6 0 0012 0c0-5-6-10-6-10z"/>
-            <path d="M12 19v3M9 22h6"/>
-          </svg>
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80"
+             class="leistung-card-img" alt="Heizungsanlage" loading="lazy">
+        <div class="leistung-card-body">
+          <div class="leistung-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
+              <path d="M12 2c0 0-6 5-6 10a6 6 0 0012 0c0-5-6-10-6-10z"/>
+              <path d="M12 19v3M9 22h6"/>
+            </svg>
+          </div>
+          <h3>Heizungsanlagen</h3>
+          <p>Installation, Modernisierung und Wartung aller Heizungsarten: Gas, Öl, Wärmepumpe, Pellets. Wir planen Ihre neue Heizungsanlage und führen die Montage fachgerecht aus.</p>
+          <a href="#kontakt" class="leistung-link">
+            Anfragen
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
         </div>
-        <h3>Heizungsanlagen</h3>
-        <p>Installation, Modernisierung und Wartung aller Heizungsarten: Gas, Öl, Wärmepumpe, Pellets. Wir planen Ihre neue Heizungsanlage und führen die Montage fachgerecht aus.</p>
-        <a href="#kontakt" class="leistung-link">
-          Anfragen
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-        </a>
       </div>
 
       <!-- Sanitär -->
       <div class="leistung-card reveal" style="transition-delay:0.1s">
-        <div class="leistung-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
-            <path d="M6 3v12"/>
-            <path d="M18 9a3 3 0 000-6H3"/>
-            <path d="M6 15a3 3 0 106 0v-3H6v3z"/>
-          </svg>
+        <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=80"
+             class="leistung-card-img" alt="Badezimmer Sanitär" loading="lazy">
+        <div class="leistung-card-body">
+          <div class="leistung-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
+              <path d="M6 3v12"/>
+              <path d="M18 9a3 3 0 000-6H3"/>
+              <path d="M6 15a3 3 0 106 0v-3H6v3z"/>
+            </svg>
+          </div>
+          <h3>Sanitärinstallation</h3>
+          <p>Kompletter Bäderneubau und -sanierung, Rohrleitungsarbeiten, Wasserschadensanierung. Wir gestalten und installieren Ihr Traumbad — vom Konzept bis zur schlüsselfertigen Übergabe.</p>
+          <a href="#kontakt" class="leistung-link">
+            Anfragen
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
         </div>
-        <h3>Sanitärinstallation</h3>
-        <p>Kompletter Bäderneubau und -sanierung, Rohrleitungsarbeiten, Wasserschadensanierung. Wir gestalten und installieren Ihr Traumbad — vom Konzept bis zur schlüsselfertigen Übergabe.</p>
-        <a href="#kontakt" class="leistung-link">
-          Anfragen
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-        </a>
       </div>
 
       <!-- Notdienst -->
       <div class="leistung-card notdienst reveal" style="transition-delay:0.2s">
-        <div class="notdienst-badge">Sofort verfügbar</div>
-        <div class="leistung-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.8">
-            <circle cx="12" cy="12" r="10"/>
-            <polyline points="12 6 12 12 16 14"/>
-          </svg>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80"
+             class="leistung-card-img" alt="Notdienst Werkzeug" loading="lazy" style="opacity:0.45;filter:brightness(0.5)">
+        <div class="leistung-card-body">
+          <div class="notdienst-badge">Sofort verfügbar</div>
+          <div class="leistung-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.8">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <h3>24/7 Notdienst</h3>
+          <p>Rohrbruch, Heizungsausfall, Wasserschaden — wir sind innerhalb von 60 Minuten bei Ihnen. Tag und Nacht, Wochenende und Feiertag. Rufen Sie jetzt an: <strong style="color:#fff">069 123 456 78</strong></p>
+          <a href="tel:06912345678" class="leistung-link">
+            Jetzt anrufen
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
         </div>
-        <h3>24/7 Notdienst</h3>
-        <p>Rohrbruch, Heizungsausfall, Wasserschaden — wir sind innerhalb von 60 Minuten bei Ihnen. Tag und Nacht, Wochenende und Feiertag. Rufen Sie jetzt an: <strong style="color:#fff">069 123 456 78</strong></p>
-        <a href="tel:06912345678" class="leistung-link">
-          Jetzt anrufen
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-        </a>
       </div>
 
       <!-- Wärmepumpen -->
       <div class="leistung-card reveal" style="transition-delay:0.3s">
-        <div class="leistung-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
-            <circle cx="12" cy="12" r="3"/>
-            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
-          </svg>
+        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80"
+             class="leistung-card-img" alt="Solaranlage Wärmepumpe" loading="lazy">
+        <div class="leistung-card-body">
+          <div class="leistung-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+            </svg>
+          </div>
+          <h3>Wärmepumpen &amp; Solar</h3>
+          <p>Zukunftssichere Heizsysteme mit erneuerbaren Energien. Wir beraten Sie zu Wärmepumpen und Solarthermie, beantragen Fördergelder (BEG) und kümmern uns um die komplette Installation.</p>
+          <a href="#kontakt" class="leistung-link">
+            Anfragen
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
         </div>
-        <h3>Wärmepumpen &amp; Solar</h3>
-        <p>Zukunftssichere Heizsysteme mit erneuerbaren Energien. Wir beraten Sie zu Wärmepumpen und Solarthermie, beantragen Fördergelder (BEG) und kümmern uns um die komplette Installation.</p>
-        <a href="#kontakt" class="leistung-link">
-          Anfragen
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-        </a>
       </div>
     </div>
   </div>
