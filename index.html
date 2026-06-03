@@ -330,134 +330,197 @@
     .hero-ring.r1 { width: 380px; height: 380px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: spin 18s linear infinite; }
     .hero-ring.r2 { width: 480px; height: 480px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: spin 26s linear infinite reverse; }
 
-    /* ─── STATS ─── */
+    /* ─── STATS / TANKS ─── */
     #stats {
-      padding: 64px 0;
+      padding: 80px 0 72px;
       background: var(--navy);
     }
-    .stats-grid {
+    .tanks-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .tanks-header .section-label {
+      color: rgba(255,255,255,0.45);
+    }
+    .tanks-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      text-align: center;
+      gap: 20px;
+      align-items: end;
     }
-    .stat-item { padding: 8px; }
-    .stat-num {
-      font-family: 'Manrope', sans-serif;
-      font-size: clamp(2.2rem, 4vw, 3rem);
-      font-weight: 800;
-      color: var(--orange);
-      line-height: 1;
-      margin-bottom: 6px;
+    .tank-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
     }
-    .stat-label {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.65);
-      font-weight: 400;
-    }
-    .stat-divider {
-      width: 1px; background: rgba(255,255,255,0.1);
-      align-self: stretch;
-    }
-
-    /* ─── LEISTUNGEN ─── */
-    #leistungen { background: var(--bg); }
-    .leistungen-header { text-align: center; margin-bottom: 64px; }
-    .leistungen-header .section-subtitle { margin: 0 auto; }
-    .leistungen-header .orange-line { margin: 20px auto 0; }
-    .leistungen-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-    .leistung-card {
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 0;
-      border: 1px solid var(--border);
-      transition: var(--transition);
+    .tank-vessel {
+      width: 100%;
+      max-width: 130px;
+      height: 180px;
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: 16px 16px 10px 10px;
       position: relative;
       overflow: hidden;
+      background: rgba(255,255,255,0.03);
     }
-    .leistung-card-img {
-      width: 100%; height: 200px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
+    .tank-water {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 0;
+      background: linear-gradient(180deg, rgba(249,115,22,0.88) 0%, rgba(234,88,12,0.96) 100%);
+      transition: height 2s cubic-bezier(0.23, 1, 0.32, 1);
+      overflow: hidden;
     }
-    .leistung-card:hover .leistung-card-img { transform: scale(1.05); }
-    .leistung-card-body { padding: 32px 32px 36px; }
-    .leistung-card::before {
+    .tank-wave-svg {
+      position: absolute;
+      top: -11px; left: 0;
+      width: 200%; height: 22px;
+      animation: wave-flow 3s linear infinite;
+    }
+    @keyframes wave-flow {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .tank-number {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.5s ease 1.6s;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.25);
+      text-align: center;
+      line-height: 1.2;
+    }
+    .tank-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      line-height: 1.45;
+    }
+
+    /* ─── LEISTUNGEN STRIPS ─── */
+    #leistungen { background: var(--bg); }
+    .leistungen-header { text-align: center; margin-bottom: 72px; }
+    .leistungen-header .section-subtitle { margin: 0 auto; }
+    .leistungen-header .orange-line { margin: 20px auto 0; }
+    .service-strips { display: flex; flex-direction: column; }
+    .service-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .service-strip:last-child { border-bottom: none; padding-bottom: 0; }
+    .service-strip.reverse .strip-visual { order: 2; }
+    .service-strip.reverse .strip-content { order: 1; }
+    .strip-visual {
+      border-radius: 24px;
+      padding: 56px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--bg-blue);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .strip-visual::before {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--orange), var(--orange-dark));
-      transform: scaleX(0); transform-origin: left;
-      transition: transform var(--transition);
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(27,58,107,0.72) 0%, rgba(27,58,107,0.36) 100%);
     }
-    .leistung-card:hover::before { transform: scaleX(1); }
-    .leistung-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 56px var(--shadow-blue);
-      border-color: transparent;
+    .strip-visual.dark {
+      background-color: var(--navy);
     }
-    .leistung-icon {
-      width: 58px; height: 58px; border-radius: 14px;
-      background: var(--bg-blue);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 22px;
-      transition: var(--transition);
+    .strip-visual.dark::before {
+      background: linear-gradient(135deg, rgba(27,58,107,0.92) 0%, rgba(45,95,160,0.82) 100%);
     }
-    .leistung-card:hover .leistung-icon {
-      background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+    .strip-icon-box {
+      width: 96px; height: 96px;
+      border-radius: 26px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative; z-index: 2;
+      box-shadow: 0 20px 48px rgba(27,58,107,0.4);
     }
-    .leistung-card:hover .leistung-icon svg path,
-    .leistung-card:hover .leistung-icon svg rect,
-    .leistung-card:hover .leistung-icon svg circle { stroke: #fff; }
-    .leistung-card h3 {
-      font-size: 1.2rem; font-weight: 700;
-      color: var(--navy); margin-bottom: 10px;
+    .strip-visual.dark .strip-icon-box {
+      background: rgba(249,115,22,0.15);
+      border: 2px solid rgba(249,115,22,0.3);
     }
-    .leistung-card p {
-      font-size: 0.9rem; color: var(--text-light);
-      line-height: 1.7; margin-bottom: 20px;
+    .strip-icon-box svg { width: 44px; height: 44px; }
+    .strip-badge {
+      position: absolute;
+      top: 18px; right: 18px;
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 50px;
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(6px);
+      color: rgba(255,255,255,0.88);
+      z-index: 2;
     }
-    .leistung-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.85rem; font-weight: 600;
-      color: var(--orange); text-decoration: none;
-      transition: gap var(--transition);
-    }
-    .leistung-link:hover { gap: 10px; }
-    .leistung-card.notdienst {
-      background: linear-gradient(135deg, var(--navy) 0%, #2D5FA0 100%);
-      border-color: transparent;
-    }
-    .leistung-card.notdienst h3, .leistung-card.notdienst p { color: rgba(255,255,255,0.92); }
-    .leistung-card.notdienst p { color: rgba(255,255,255,0.65); }
-    .leistung-card.notdienst .leistung-icon { background: rgba(255,255,255,0.12); }
-    .leistung-card.notdienst .leistung-link { color: var(--orange); }
-    .notdienst-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(249,115,22,0.2);
+    .strip-badge.urgent {
+      background: rgba(249,115,22,0.22);
       border: 1px solid rgba(249,115,22,0.4);
-      border-radius: 50px; padding: 4px 12px;
-      font-size: 0.75rem; font-weight: 600; color: #FED7AA;
-      margin-bottom: 18px;
+      color: var(--orange);
     }
-    .notdienst-badge::before {
-      content: ''; width: 6px; height: 6px;
-      border-radius: 50%; background: var(--orange);
-      animation: pulse 1.5s ease-in-out infinite;
+    .strip-tag {
+      display: inline-block;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.17em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 16px;
+    }
+    .strip-content h3 {
+      font-size: clamp(1.45rem, 2.5vw, 1.9rem);
+      font-weight: 800; color: var(--navy);
+      margin-bottom: 16px; line-height: 1.15;
+    }
+    .strip-content p {
+      font-size: 0.93rem; color: var(--text-light);
+      line-height: 1.78; margin-bottom: 28px;
+    }
+    .strip-features {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 10px;
+      margin-bottom: 32px;
+    }
+    .strip-features li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.88rem; color: var(--text-light); line-height: 1.5;
+    }
+    .strip-check {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--bg-blue);
+      border: 2px solid var(--navy-light);
+      flex-shrink: 0; display: flex;
+      align-items: center; justify-content: center;
+      margin-top: 1px; font-size: 9px;
+      color: var(--navy); font-weight: 800;
     }
 
     /* ─── WARUM ─── */
     #warum { background: var(--white); }
     .warum-inner {
       display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 80px;
-      align-items: center;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
     }
     .warum-left .section-subtitle { margin-bottom: 32px; }
     .warum-features {
@@ -877,9 +940,12 @@
       .hero-inner { grid-template-columns: 1fr; gap: 40px; }
       .hero-bg { background: linear-gradient(180deg, var(--white) 60%, var(--navy) 60%); }
       .hero-visual { height: 360px; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-      .stat-divider { display: none; }
-      .leistungen-grid { grid-template-columns: 1fr; }
+      .tanks-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .tank-vessel { max-width: 100%; height: 160px; }
+      .service-strip { grid-template-columns: 1fr; gap: 32px; padding: 48px 0; }
+      .service-strip.reverse .strip-visual { order: 0; }
+      .service-strip.reverse .strip-content { order: 1; }
+      .strip-visual { min-height: 220px; padding: 40px 24px; }
       .warum-inner { grid-template-columns: 1fr; gap: 48px; }
       .prozess-steps { grid-template-columns: repeat(2, 1fr); gap: 32px; }
       .prozess-steps::before { display: none; }
@@ -889,11 +955,16 @@
       .footer-top { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
-      section { padding: 72px 0; }
+      section { padding: 64px 0; }
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
       .hero-title { font-size: 2.2rem; }
       .hero-actions { flex-direction: column; }
+      .tanks-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .tank-vessel { height: 130px; }
+      .tank-number { font-size: 1.1rem; }
+      .service-strip { gap: 24px; padding: 40px 0; }
+      .strip-content h3 { font-size: 1.35rem; }
       .form-row { grid-template-columns: 1fr; }
       .kontakt-form-wrap { padding: 28px 20px; }
       .footer-top { grid-template-columns: 1fr; }
@@ -1088,26 +1159,62 @@
   </div>
 </section>
 
-<!-- ─── STATS ─── -->
+<!-- ─── STATS / TANKS ─── -->
 <section id="stats">
   <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item reveal">
-        <div class="stat-num" data-target="1200">0</div>
-        <div class="stat-label">Abgeschlossene Projekte</div>
+    <div class="tanks-header reveal">
+      <span class="section-label">In Zahlen</span>
+    </div>
+    <div class="tanks-grid">
+
+      <div class="tank-wrap reveal" data-fill="75">
+        <div class="tank-vessel">
+          <div class="tank-water">
+            <svg class="tank-wave-svg" viewBox="0 0 200 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 11 Q25 0 50 11 Q75 22 100 11 Q125 0 150 11 Q175 22 200 11 L200 22 L0 22 Z" fill="rgba(234,88,12,0.45)"/>
+            </svg>
+            <div class="tank-number">1.200+</div>
+          </div>
+        </div>
+        <div class="tank-label">Abgeschlossene<br>Projekte</div>
       </div>
-      <div class="stat-item reveal" style="transition-delay:0.1s">
-        <div class="stat-num" data-target="25">0</div>
-        <div class="stat-label">Jahre Erfahrung</div>
+
+      <div class="tank-wrap reveal" data-fill="65" style="transition-delay:0.1s">
+        <div class="tank-vessel">
+          <div class="tank-water">
+            <svg class="tank-wave-svg" viewBox="0 0 200 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 11 Q25 0 50 11 Q75 22 100 11 Q125 0 150 11 Q175 22 200 11 L200 22 L0 22 Z" fill="rgba(234,88,12,0.45)"/>
+            </svg>
+            <div class="tank-number">25 Jahre</div>
+          </div>
+        </div>
+        <div class="tank-label">Erfahrung</div>
       </div>
-      <div class="stat-item reveal" style="transition-delay:0.2s">
-        <div class="stat-num">98<span style="font-size:1.4rem">%</span></div>
-        <div class="stat-label">Kundenzufriedenheit</div>
+
+      <div class="tank-wrap reveal" data-fill="90" style="transition-delay:0.2s">
+        <div class="tank-vessel">
+          <div class="tank-water">
+            <svg class="tank-wave-svg" viewBox="0 0 200 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 11 Q25 0 50 11 Q75 22 100 11 Q125 0 150 11 Q175 22 200 11 L200 22 L0 22 Z" fill="rgba(234,88,12,0.45)"/>
+            </svg>
+            <div class="tank-number">98%</div>
+          </div>
+        </div>
+        <div class="tank-label">Kunden-<br>zufriedenheit</div>
       </div>
-      <div class="stat-item reveal" style="transition-delay:0.3s">
-        <div class="stat-num">24/7</div>
-        <div class="stat-label">Notdienst verfügbar</div>
+
+      <div class="tank-wrap reveal" data-fill="82" style="transition-delay:0.3s">
+        <div class="tank-vessel">
+          <div class="tank-water">
+            <svg class="tank-wave-svg" viewBox="0 0 200 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 11 Q25 0 50 11 Q75 22 100 11 Q125 0 150 11 Q175 22 200 11 L200 22 L0 22 Z" fill="rgba(234,88,12,0.45)"/>
+            </svg>
+            <div class="tank-number">24 / 7</div>
+          </div>
+        </div>
+        <div class="tank-label">Notdienst<br>verfügbar</div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1122,88 +1229,105 @@
       <div class="orange-line"></div>
     </div>
 
-    <div class="leistungen-grid">
+    <div class="service-strips">
+
       <!-- Heizungsanlagen -->
-      <div class="leistung-card reveal">
-        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80"
-             class="leistung-card-img" alt="Heizungsanlage" loading="lazy">
-        <div class="leistung-card-body">
-          <div class="leistung-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
+      <div class="service-strip reveal">
+        <div class="strip-visual" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80')">
+          <span class="strip-badge">Heizung</span>
+          <div class="strip-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" width="44" height="44">
               <path d="M12 2c0 0-6 5-6 10a6 6 0 0012 0c0-5-6-10-6-10z"/>
               <path d="M12 19v3M9 22h6"/>
             </svg>
           </div>
-          <h3>Heizungsanlagen</h3>
+        </div>
+        <div class="strip-content">
+          <span class="strip-tag">Heizungsanlagen</span>
+          <h3>Heizung modernisieren &amp; installieren</h3>
           <p>Installation, Modernisierung und Wartung aller Heizungsarten: Gas, Öl, Wärmepumpe, Pellets. Wir planen Ihre neue Heizungsanlage und führen die Montage fachgerecht aus.</p>
-          <a href="#kontakt" class="leistung-link">
-            Anfragen
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
+          <ul class="strip-features">
+            <li><span class="strip-check">✓</span> Gas-, Öl- &amp; Pelletheizungen</li>
+            <li><span class="strip-check">✓</span> Wartungsverträge &amp; Reparatur</li>
+            <li><span class="strip-check">✓</span> Hydraulischer Abgleich inklusive</li>
+          </ul>
+          <a href="#kontakt" class="btn btn-orange">Jetzt anfragen</a>
         </div>
       </div>
 
       <!-- Sanitär -->
-      <div class="leistung-card reveal" style="transition-delay:0.1s">
-        <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=80"
-             class="leistung-card-img" alt="Badezimmer Sanitär" loading="lazy">
-        <div class="leistung-card-body">
-          <div class="leistung-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
+      <div class="service-strip reverse reveal" style="transition-delay:0.1s">
+        <div class="strip-visual" style="background-image: url('https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=800&q=80')">
+          <span class="strip-badge">Sanitär</span>
+          <div class="strip-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" width="44" height="44">
               <path d="M6 3v12"/>
               <path d="M18 9a3 3 0 000-6H3"/>
               <path d="M6 15a3 3 0 106 0v-3H6v3z"/>
             </svg>
           </div>
-          <h3>Sanitärinstallation</h3>
-          <p>Kompletter Bäderneubau und -sanierung, Rohrleitungsarbeiten, Wasserschadensanierung. Wir gestalten und installieren Ihr Traumbad — vom Konzept bis zur schlüsselfertigen Übergabe.</p>
-          <a href="#kontakt" class="leistung-link">
-            Anfragen
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
         </div>
-      </div>
-
-      <!-- Notdienst -->
-      <div class="leistung-card notdienst reveal" style="transition-delay:0.2s">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80"
-             class="leistung-card-img" alt="Notdienst Werkzeug" loading="lazy" style="opacity:0.45;filter:brightness(0.5)">
-        <div class="leistung-card-body">
-          <div class="notdienst-badge">Sofort verfügbar</div>
-          <div class="leistung-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.8">
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="12 6 12 12 16 14"/>
-            </svg>
-          </div>
-          <h3>24/7 Notdienst</h3>
-          <p>Rohrbruch, Heizungsausfall, Wasserschaden — wir sind innerhalb von 60 Minuten bei Ihnen. Tag und Nacht, Wochenende und Feiertag. Rufen Sie jetzt an: <strong style="color:#fff">069 123 456 78</strong></p>
-          <a href="tel:06912345678" class="leistung-link">
-            Jetzt anrufen
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
+        <div class="strip-content">
+          <span class="strip-tag">Sanitärinstallation</span>
+          <h3>Bäder planen &amp; realisieren</h3>
+          <p>Kompletter Bäderneubau und -sanierung, Rohrleitungsarbeiten, Wasserschadensanierung. Wir gestalten und installieren Ihr Traumbad — vom Konzept bis zur schlüsselfertigen Übergabe.</p>
+          <ul class="strip-features">
+            <li><span class="strip-check">✓</span> Badplanung &amp; Komplettbad</li>
+            <li><span class="strip-check">✓</span> Rohrleitungssanierung</li>
+            <li><span class="strip-check">✓</span> Wasserschadenbehebung</li>
+          </ul>
+          <a href="#kontakt" class="btn btn-orange">Jetzt anfragen</a>
         </div>
       </div>
 
       <!-- Wärmepumpen -->
-      <div class="leistung-card reveal" style="transition-delay:0.3s">
-        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80"
-             class="leistung-card-img" alt="Solaranlage Wärmepumpe" loading="lazy">
-        <div class="leistung-card-body">
-          <div class="leistung-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
+      <div class="service-strip reveal" style="transition-delay:0.2s">
+        <div class="strip-visual" style="background-image: url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80')">
+          <span class="strip-badge">Erneuerbar</span>
+          <div class="strip-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" width="44" height="44">
               <circle cx="12" cy="12" r="3"/>
               <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
             </svg>
           </div>
-          <h3>Wärmepumpen &amp; Solar</h3>
-          <p>Zukunftssichere Heizsysteme mit erneuerbaren Energien. Wir beraten Sie zu Wärmepumpen und Solarthermie, beantragen Fördergelder (BEG) und kümmern uns um die komplette Installation.</p>
-          <a href="#kontakt" class="leistung-link">
-            Anfragen
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
+        </div>
+        <div class="strip-content">
+          <span class="strip-tag">Wärmepumpen &amp; Solar</span>
+          <h3>Zukunftssichere Heizsysteme</h3>
+          <p>Wärmepumpen und Solarthermie als klimafreundliche Alternative. Wir beraten Sie zu Förderprogrammen (BEG), beantragen Ihren Zuschuss und übernehmen die komplette Installation.</p>
+          <ul class="strip-features">
+            <li><span class="strip-check">✓</span> Luft-Wasser &amp; Erdwärmepumpen</li>
+            <li><span class="strip-check">✓</span> BAFA/KfW-Förderung inklusive</li>
+            <li><span class="strip-check">✓</span> Solarthermie-Kombisysteme</li>
+          </ul>
+          <a href="#kontakt" class="btn btn-orange">Jetzt anfragen</a>
         </div>
       </div>
+
+      <!-- Notdienst -->
+      <div class="service-strip reverse reveal" style="transition-delay:0.3s">
+        <div class="strip-visual dark">
+          <span class="strip-badge urgent">24/7</span>
+          <div class="strip-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" width="44" height="44">
+              <circle cx="12" cy="12" r="10" stroke="var(--orange)"/>
+              <polyline points="12 6 12 12 16 14" stroke="var(--orange)"/>
+            </svg>
+          </div>
+        </div>
+        <div class="strip-content">
+          <span class="strip-tag">Notdienst</span>
+          <h3>Rund um die Uhr für Sie da</h3>
+          <p>Rohrbruch, Heizungsausfall, Wasserschaden — wir sind innerhalb von 60 Minuten bei Ihnen. Tag und Nacht, Wochenende und Feiertag. Rufen Sie jetzt an: <strong style="color:var(--orange)">069 123 456 78</strong></p>
+          <ul class="strip-features">
+            <li><span class="strip-check">✓</span> Reaktionszeit unter 60 Minuten</li>
+            <li><span class="strip-check">✓</span> Alle Tage, auch Feiertage</li>
+            <li><span class="strip-check">✓</span> Festpreis ohne Aufschlag</li>
+          </ul>
+          <a href="tel:06912345678" class="btn btn-orange">Jetzt anrufen</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1669,7 +1793,23 @@
   }, { threshold: 0.12 });
   reveals.forEach(el => revealObs.observe(el));
 
-  // ── Animated counters ──
+  // ── Water tank fill animation ──
+  const tanks = document.querySelectorAll('.tank-wrap[data-fill]');
+  const tankObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const wrap = e.target;
+      const fill = parseInt(wrap.dataset.fill);
+      const water = wrap.querySelector('.tank-water');
+      const num = wrap.querySelector('.tank-number');
+      if (water) water.style.height = fill + '%';
+      if (num) setTimeout(() => { num.style.opacity = '1'; }, 1700);
+      tankObs.unobserve(wrap);
+    });
+  }, { threshold: 0.4 });
+  tanks.forEach(el => tankObs.observe(el));
+
+  // ── Animated counters (legacy, no-op if no elements) ──
   const counters = document.querySelectorAll('.stat-num[data-target]');
   const counterObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
